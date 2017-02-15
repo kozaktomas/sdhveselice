@@ -1,0 +1,23 @@
+language: php
+
+php:
+  - 7.0
+  - 7.1
+env:
+  matrix:
+    - PHP_BIN=php
+script:
+  - vendor/bin/tester -p $PHP_BIN tests -s
+after_failure:
+  - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
+before_script:
+  - mkdir -p temp/cache
+  - mkdir log
+  - travis_retry composer install --no-interaction --prefer-dist
+after_success:
+  - composer install --no-dev -o
+
+sudo: false
+cache:
+  directories:
+  - "$HOME/.composer/cache"
