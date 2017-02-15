@@ -1,0 +1,23 @@
+{block content}
+    <h1>{block title}{$article->title}{/block}</h1>
+    <img n:if="$article->imageIn" alt="{$article->title}" src="{$basePath}/data/{$cover}" class="left">
+    {$article->text|noescape}
+
+    {if $user}
+        <hr>
+        <a n:href="admin $article->id"><img class="edit" src="{$basePath}/images/edit.png" alt="edit"></a>
+        <a n:href="delete $article->id"><img class="delete" src="{$basePath}/images/delete.png" alt="delete"></a>
+    {/if}
+
+    {if count($gallery)}
+        <hr>
+        <h3>Galerie:</h3>
+        <div class="galerie">
+            {foreach $gallery as $image}
+                <a data-lightbox="roadtrip" href="{$basePath}/data/galerie/{$article->id}/{$image->getBasename()}">
+                    <img src="{$basePath}/data/galerie/{$article->id}/thumb/{$image->getBasename()}" alt="Obrázek v galerii">
+                </a>
+            {/foreach}
+        </div>
+    {/if}
+{/block}

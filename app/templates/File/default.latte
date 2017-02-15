@@ -1,0 +1,13 @@
+{block content}
+    <h1>{block title}Soubory{/block}</h1>
+    {control uploadForm}
+    <hr>
+    <table>
+        {foreach $files as $file}
+            <tr>
+                <td>{$file->getBaseName()}</td>
+                <td><a n:href="delete $file->getBaseName()"><img src="{$basePath}/images/delete.png" alt="delete"></a></td>
+            </tr>
+        {/foreach}
+    </table>
+{/block}

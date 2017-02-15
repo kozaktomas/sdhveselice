@@ -1,0 +1,26 @@
+{block title}Novinky{/block}
+
+{block content}
+
+    {foreach $articles as $article}
+        <div class="article">
+            <h2><a n:href="detail $article['id']">{$article['title']}</a></h2>
+            {if $user}
+                <a n:href="admin $article['id']"><img class="edit" src="{$basePath}/images/edit.png" alt="edit"></a>
+                <a n:href="delete $article['id']"><img class="delete" src="{$basePath}/images/delete.png" alt="delete"></a>
+            {/if}
+            <div class="block">
+                <div class="photo"><a n:href="detail $article['id']"><img src="{$basePath}/data/{$article['dir']}/{$article['image']}" alt="{$article['title']}"></a></div>
+                <div class="perex">{$article['text']|striptags|truncate:420}</div>
+                <div class="fix"></div>
+            </div>
+        </div>
+        {sep}
+            <hr>
+        {/sep}
+    {/foreach}
+
+    {control vp}
+
+
+{/block}

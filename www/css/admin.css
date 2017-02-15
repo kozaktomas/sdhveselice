@@ -1,0 +1,44 @@
+.adminbar{
+  top: 0;
+  padding-top: 7px;
+  height: 25px;
+  width: 100%;
+  color: #FFF;
+  background-color: #000;
+  text-align: center;
+}
+
+.adminbar ul{
+  margin: 0px auto;
+  list-style: none;
+}
+
+.adminbar ul li{
+  display: inline;
+  margin: 0 5px 0;
+}
+
+.adminbar ul li a{
+  color: #FFF;
+  font-size: 12pt;
+  text-decoration: none;
+}
+
+.content .text form table tr td, .content .text form table tr th{
+    border: none;
+    background: transparent;
+    color:#000;
+}
+
+.content .text input, .content .text textarea{
+    width: 100%;
+}
+
+.content .text img.edit{
+    border: none;
+    margin-right: 15px;
+}
+
+.content .text img.delete{
+    border: none;
+}

@@ -1,0 +1,18 @@
+{block content}
+    <h1>{block title}Administrace{/block}</h1>
+    {control articleForm}
+
+    {if $id_article > 0}
+        <hr>
+        {control photoForm}
+        <table>
+            {foreach $gallery as $image}
+                <tr>
+                    <td><img src="{$basePath}/data/galerie/{$article->id}/thumb/{$image->getBasename()}" width="183px" alt="Obrázek v galerii"></td>
+                    <td><a n:href="deletePhoto $article->id, $image->getBasename()">Smazat</a></td>
+                </tr>
+            {/foreach}
+        </table>
+    {/if}
+
+{/block}
