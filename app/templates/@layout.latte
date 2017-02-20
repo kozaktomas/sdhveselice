@@ -1,103 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link n:if="$user" rel="stylesheet" href="{$basePath}/css/admin.css" type="text/css">
-    <meta charset="UTF-8">
-    <meta name="author" content="Tomáš Kozák">
-    <meta name="robots" content="index,follow">
-    <meta name="googlebot" content="index,follow,snippet,archive">
-    <meta name="keywords" content="SDH, hasici, dobrovolní, dobrovolní hasiči, sbor, požární útok, sdhveselice, pouť">
-    <meta name="description" content="Oficiální stránky sboru dobrovolných hasičů Veselice.">
-    <title>{include title} | SDH Veselice</title>
-    <script src="{$basePath}/js/jquery-2.1.1.min.js"></script>
-    <script src="{$basePath}/js/lightbox-2.6.min.js"></script>
-    <link href="{$basePath}/css/style.css" rel="stylesheet" type="text/css">
-    <link href="{$basePath}/css/lightbox.css" rel="stylesheet" type="text/css">
-    <script n:syntax="off">
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <meta charset="utf-8">
+    <title>{include title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
-        ga('create', 'UA-10986596-2', 'auto');
-        ga('send', 'pageview');
+    {if $staticDebug}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/new_style/my.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+                integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {else}
 
-    </script>
+    {/if}
 </head>
 <body>
-{block|strip}
-    <div n:if="$user" class="adminbar">
-        <ul>
-            <li><a n:href="Article:admin">Přidat článek</a></li>
-            <li><a n:href="File:default">Soubory</a></li>
-            <li><a n:href="Sign:out">Odhlásit se</a></li>
-        </ul>
+<div class="full-width-div">
+    <div class="img-responsive">
+        <img width="100%" src="/1.png" alt="">
     </div>
-    <div class="warp">
+</div>
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                {var $action = $presenter->getAction()}
+                <li n:class="($action === 'default') ? 'current'">
+                    <a n:href="Document:default">Domů</a>
+                </li>
+                <li n:class="($action === 'list') ? 'current'">
+                    <a n:href="Article:list">Novinky</a>
+                </li>
+                <li n:class="($action === 'vybor') ? 'current'">
+                    <a n:href="Document:vybor">Výbor</a>
+                </li>
+                <li n:class="($action === 'zavody') ? 'current'">
+                    <a n:href="Document:zavody">Závody ve Veselici</a>
+                </li>
+                <li n:class="($action === 'sport') ? 'current'">
+                    <a n:href="Document:sport">Sportovní družstvo</a>
+                </li>
+                <li n:class="($action === 'kontakt') ? 'current'">
+                    <a n:href="Document:kontakt">Kontakt</a>
+                </li>
+                <li class="lesempolem">
+                    <a target="_blank" href="https://lesempolem.cz">Lesempolem</a>
+                </li>
+                <li class="facebook">
+                    <a target="_blank" href="https://facebook.com/sdhveselice">Facebook</a>
+                </li>
+            </ul>
 
-        <div class="warp2">
-
-            <div class="header h{$header}"></div>
-            <nav>
-                <ul>
-                    <li><a n:href="Document:default">Domů</a></li>
-                    <li><a n:href="Article:list">Novinky</a></li>
-                    <li><a n:href="Document:vybor">Výbor</a></li>
-                    <li><a n:href="Document:zavody">Závody ve Veselici</a></li>
-                    <li><a n:href="Document:sport">Sportovní družstvo</a></li>
-                    {*<li><a n:href="Document:mladez">Práce s mládží</a></li>*}
-                    <li><a n:href="Document:kontakt">Kontakt</a></li>
-                    <li class="lesempolem"><a target="_blank" href="https://lesempolem.cz">Lesempolem</a></li>
-                    <li class="facebook"><a target="_blank" href="https://facebook.com/sdhveselice">Facebook</a></li>
-                </ul>
-            </nav>
-
-            <div class="content">
-                <div class="text">
-
-                    {include content}
-
-                </div>
-
-                <div class="right">
-
-                    <div class="box">
-                        <h3>
-                            <a n:href="Article:list">Novinky</a>
-                            <a n:href="Rss:feed">
-                                <img src="{$basePath}/images/rss18.png" alt="Rss logo">
-                            </a>
-                        </h3>
-                        <hr>
-                        {foreach $news as $new}
-                            <h4><a n:href="Article:detail $new->id">{$new->title}</a></h4>
-                            <p>{$new->text|striptags|truncate:260}</p>
-                            {sep}
-                                <hr>
-                            {/sep}
-                        {/foreach}
-                    </div>
-
-                </div>
-
-                <div class="fix"></div>
-            </div>
-
-
-            <footer>
-                <div class="links">
-                    <a target="_blank" title="Běžecké závody Lesempolem" href="http://lesempolem.cz"><img src="{$basePath}/images/lp.png" alt="logo běžeckých závodů Lesempolem"/></a>
-                    <a target="_blank" title="Obec Vavřinec" href="http://vavrinec.cz"><img src="{$basePath}/images/vavrinec.png" alt="Logo obce Vavřinec"/></a>
-                    <a target="_blank" title="RSS" n:href="Rss:feed"><img src="{$basePath}/images/rss32.png" alt="Rss feed s novinkami"/></a>
-                    <a target="_blank" title="Github" href="https://github.com/kozaktomas/sdhveselice"><img width="32px" src="{$basePath}/images/github-logo.svg" alt="sdhveselice.cz na Githubu"/></a>
-                </div>
-                {var $year = new DateTime}
-                <p>&copy; SDH Veselice 1921 - {$year->format('Y')}</p>
-            </footer>
+            <!--
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
+                <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>
+            </ul>
+            -->
 
         </div>
-
     </div>
-{/block}
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-8 content">
+            {include content}
+        </div>
+
+        <div class="col-lg-4 col-md-3 col-sm-4">
+            <h2>Novinky:</h2>
+            <div class="list-group table-of-contents">
+                {foreach $news as $new}
+                    <a class="list-group-item" n:href="Article:detail $new->id">
+                        <h3>{$new->title}</h3>
+                        <p>{$new->text|striptags|truncate:260}</p>
+                    </a>
+                {/foreach}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="footer">
+    <div class="container">
+        <div class="links">
+            <a target="_blank" title="Běžecké závody Lesempolem" href="http://lesempolem.cz"><img
+                        src="/images/lp.png" alt="logo běžeckých závodů Lesempolem"></a>
+            <a target="_blank"
+               title="Obec Vavřinec"
+               href="http://vavrinec.cz"><img
+                        src="/images/vavrinec.png" alt="Logo obce Vavřinec"></a>
+            <a target="_blank" title="RSS" href="/rss"><img
+                        src="/images/rss32.png" alt="Rss feed s novinkami"></a>
+            <a target="_blank" title="Github"
+               href="https://github.com/kozaktomas/sdhveselice"><img
+                        width="32px" src="/images/github-logo.svg" alt="sdhveselice.cz na Githubu"></a>
+        </div>
+        <div class="copy">&copy; SDH Veselice 1921 - 2017</div>
+    </div>
+</div>
+
+
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 
+use App\StaticFiles;
 use Nette,
     App\Article;
 
@@ -32,6 +33,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         $articles = $this->articleTable->order('id DESC')->limit(3)->fetchAll();
         $this->template->news = $articles;
         $this->template->header = rand(1, 4);
+        $this->template->staticDebug = StaticFiles::DEBUG_MODE;
     }
 
 }

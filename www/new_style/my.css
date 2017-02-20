@@ -1,0 +1,90 @@
+.full-width-div {
+    position: relative;
+    width: 100%;
+    left: 0;
+}
+
+.container .navbar {
+    margin-bottom: 0;
+    border: none;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0;
+    background-color: #e2581d;
+}
+
+.navbar .navbar-collapse {
+    padding-left: 0;
+}
+
+.navbar-default ul.nav li a {
+    font-size: 108%;
+    color: #fff;
+}
+
+ul.nav li {
+    background-color: #e2581d;
+}
+
+ul.nav li:hover {
+    background-color: #fff;
+}
+
+ul.nav li.current {
+    background-color: #fff;
+}
+
+.navbar-default ul.nav li.current a {
+    color: #111;
+}
+
+ul.nav li.facebook {
+    background-color: #3b5998;
+}
+
+ul.nav li.facebook:hover {
+    background-color: #fff;
+}
+
+ul.nav li.lesempolem {
+    background-color: #289C4A;
+}
+
+ul.nav li.lesempolem:hover {
+    background-color: #fff;
+}
+
+.list-group h3 {
+    margin-top: 0;
+}
+
+.list-group p {
+    margin: 0;
+}
+
+.footer {
+    position: relative;
+    margin-top: 15px;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.footer .links {
+    margin-top: 16px;
+    float: left;
+}
+
+.footer .copy {
+    margin-top: 22px;
+    float: right;
+}
+
+div.content img.coverPhoto {
+    float: left;
+    margin: 0 20px 0 0;
+}

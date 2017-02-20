@@ -3,3 +3,4 @@ log/
 vendor/
 www/data/
 www/manager/
+www/static_files/
