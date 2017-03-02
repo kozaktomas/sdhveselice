@@ -88,3 +88,26 @@ div.content img.coverPhoto {
     float: left;
     margin: 0 20px 0 0;
 }
+
+.inner-addon {
+    position: relative;
+}
+
+.no-margin-top {
+    margin-top: 0;
+}
+
+.addon-space-after {
+    margin-bottom: 5px;
+}
+
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+.left-addon input {
+    padding-left: 30px;
+    font-size: 120%;
+}
