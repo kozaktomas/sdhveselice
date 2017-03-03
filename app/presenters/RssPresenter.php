@@ -3,7 +3,7 @@
 namespace Sdh\Veselice\Presenters;
 
 
-use App\XmlResponse;
+use Sdh\Veselice\Model\XmlResponse;
 use Nette\Utils\Strings;
 use Suin\RSSWriter\Channel;
 use Suin\RSSWriter\Feed;
