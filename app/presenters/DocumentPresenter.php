@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presenters;
+namespace Sdh\Veselice\Presenters;
 
 class DocumentPresenter extends BasePresenter
 {

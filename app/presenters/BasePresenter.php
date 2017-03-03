@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presenters;
+namespace Sdh\Veselice\Presenters;
 
 
 use Nette\Application\UI\Presenter;

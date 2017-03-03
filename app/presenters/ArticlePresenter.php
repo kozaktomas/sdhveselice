@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Presenters;
+namespace Sdh\Veselice\Presenters;
 
 use App\Control\VisualPaginator;
 use App\GalleryManager;
