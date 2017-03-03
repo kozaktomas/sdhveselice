@@ -1,34 +1,81 @@
 <?php
 
-namespace App;
-
-use Nette\Database\Context;
+namespace Sdh\Veselice\Model;
 
 class Article
 {
 
-    const TABLE_NAME = 'articles';
+    /** @var string */
+    private $title;
+
+    /** @var string */
+    private $url;
+
+    /** @var string */
+    private $preheader;
+
+    /** @var string */
+    private $content;
+
+    /** @var \DateTime */
+    private $created;
 
     /**
-     * @var Context
+     * Article constructor.
+     * @param string $title
+     * @param string $url
+     * @param string $preheader
+     * @param string $content
+     * @param \DateTime $created
      */
-    protected $context;
-
-    /**
-     * @param Context $context
-     */
-    public function __construct(Context $context)
+    public function __construct(string $title, string $url, string $preheader, string $content, \DateTime $created)
     {
-        $this->context = $context;
+        $this->title = $title;
+        $this->url = $url;
+        $this->preheader = $preheader;
+        $this->content = $content;
+        $this->created = $created;
     }
 
     /**
-     * @return \Nette\Database\Table\Selection
+     * @return string
      */
-    public function getTable()
+    public function getTitle(): string
     {
-        return $this->context->table(self::TABLE_NAME);
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPreheader(): string
+    {
+        return $this->preheader;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated(): \DateTime
+    {
+        return $this->created;
     }
 
 
-} 
+}

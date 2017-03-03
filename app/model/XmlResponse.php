@@ -1,7 +1,6 @@
 <?php
 
-namespace App;
-
+namespace Sdh\Veselice\Model;
 
 use Nette;
 use Nette\Application\IResponse;

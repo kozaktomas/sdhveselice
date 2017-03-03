@@ -14,9 +14,6 @@ use Nette\Utils\Strings;
 class ArticlePresenter extends BasePresenter
 {
 
-    /** @var GalleryManager @inject */
-    public $galleryManager;
-
     /**
      * Vykresluje seznam článků včetně stránkování
      */
@@ -26,11 +23,11 @@ class ArticlePresenter extends BasePresenter
 
         $vp = new VisualPaginator($this, 'vp');
         $vp->setItemsPerPage($itemPerPage);
-        $vp->setItemsCount($this->articleTable->count('*'));
+        $vp->setItemsCount(0);
 
         $page = $vp->page;
 
-        $res = $this->articleTable->order('created DESC')->page($page, $itemPerPage)->fetchAll();
+        $res = [];
         $articles = [];
 
         foreach ($res as $key => $row) {

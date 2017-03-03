@@ -20,9 +20,6 @@ session:
 
 
 services:
-	- App\UserManager(%user.username%, %user.password%)
+	- Sdh\Veselice\Model\ArticleList
 	- App\RouterFactory
-	- App\Article
-	- App\GalleryManager
-	- App\Model\FileManager
 	router: @App\RouterFactory::createRouter

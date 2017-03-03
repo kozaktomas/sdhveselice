@@ -2,24 +2,20 @@
 
 namespace App\Presenters;
 
-use App\StaticFiles;
-use Nette,
-    App\Article;
+
+use Nette\Application\UI\Presenter;
+use Sdh\Veselice\Model\ArticleList;
+use Sdh\Veselice\Model\StaticFiles;
 
 
 /**
  * Base presenter for all application presenters.
  */
-abstract class BasePresenter extends Nette\Application\UI\Presenter
+abstract class BasePresenter extends Presenter
 {
 
-    /** @var Nette\Database\Table\Selection */
-    protected $articleTable;
-
-    public function injectArticle(Article $article)
-    {
-        $this->articleTable = $article->getTable();
-    }
+    /** @var ArticleList @inject */
+    public $articleList;
 
     protected function startup()
     {
@@ -30,8 +26,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         }
         $this->template->user = $user;
 
-        $articles = $this->articleTable->order('id DESC')->limit(3)->fetchAll();
-        $this->template->news = $articles;
+        $this->template->news = [];
         $this->template->header = rand(1, 4);
         $this->template->staticDebug = StaticFiles::DEBUG_MODE;
     }
