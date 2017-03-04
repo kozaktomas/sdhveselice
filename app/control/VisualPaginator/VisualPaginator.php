@@ -67,6 +67,11 @@ class VisualPaginator extends Control
         $this->template->render();
     }
 
+    public function getPaginator()
+    {
+        return $this->paginator;
+    }
+
     /**
      * Loads state informations.
      * @param array

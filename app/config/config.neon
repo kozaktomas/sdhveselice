@@ -1,9 +1,4 @@
-includes:
-	- database.php
-	- user.php
-
 parameters:
-
 
 php:
     date.timezone: Europe/Prague

@@ -1,20 +1,40 @@
+{*
+    @var $articles \Sdh\Veselice\Model\Article[]
+*}
+
 {block title}Novinky{/block}
 
 {block content}
 
+    <h1>Novinky</h1>
+
     {foreach $articles as $article}
-        <div class="article">
-            <h2><a n:href="detail $article['id']">{$article['title']}</a></h2>
-            {if $user}
-                <a n:href="admin $article['id']"><img class="edit" src="{$basePath}/images/edit.png" alt="edit"></a>
-                <a n:href="delete $article['id']"><img class="delete" src="{$basePath}/images/delete.png" alt="delete"></a>
-            {/if}
-            <div class="block">
-                <div class="photo"><a n:href="detail $article['id']"><img src="{$basePath}/data/{$article['dir']}/{$article['image']}" alt="{$article['title']}"></a></div>
-                <div class="perex">{$article['text']|striptags|truncate:420}</div>
-                <div class="fix"></div>
+
+
+        <div class="row article-preheader">
+            <div class="col-sm-4">
+                <a n:href="detail $article->getUrl()">
+                    {if $article->getImage()}
+                        <img src="{$article->getImage()}" class="img-responsive">
+                    {else}
+                        <img src="http://placehold.it/1280X720" class="img-responsive">
+                    {/if}
+                </a>
+            </div>
+
+            <div class="col-sm-8">
+                <h3 class="title">
+                    <a n:href="detail $article->getUrl()">{$article->getTitle()}</a>
+                </h3>
+                <p class="text-muted">
+                    <span class="glyphicon glyphicon-lock"></span> {$article->getCreated()->format('d. m. Y')}
+                </p>
+
+                {$article->getPreheader()|noescape}
+
             </div>
         </div>
+
         {sep}
             <hr>
         {/sep}

@@ -111,3 +111,11 @@ div.content img.coverPhoto {
     padding-left: 30px;
     font-size: 120%;
 }
+
+.article-preheader h3 {
+    margin-top: 5px;
+}
+
+.article-preheader h3 a {
+    color: #E2581D;
+}

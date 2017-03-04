@@ -51,6 +51,7 @@ class ArticleList
             }
 
             $title = trim($latte->renderToString($file, $defaultVariables, 'title'));
+            $image = trim($latte->renderToString($file, $defaultVariables, 'image'));
             $preheader = $latte->renderToString($file, $defaultVariables, 'preheader');
             $content = $latte->renderToString($file, $defaultVariables, 'content');
             $created = new DateTime($matches[1]);
@@ -59,6 +60,7 @@ class ArticleList
             $articles[] = new Article(
                 $title,
                 $url,
+                $image,
                 $preheader,
                 $content,
                 $created

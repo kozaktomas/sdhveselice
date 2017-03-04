@@ -12,6 +12,9 @@ class Article
     private $url;
 
     /** @var string */
+    private $image;
+
+    /** @var string */
     private $preheader;
 
     /** @var string */
@@ -24,14 +27,16 @@ class Article
      * Article constructor.
      * @param string $title
      * @param string $url
+     * @param string $image
      * @param string $preheader
      * @param string $content
      * @param \DateTime $created
      */
-    public function __construct(string $title, string $url, string $preheader, string $content, \DateTime $created)
+    public function __construct(string $title, string $url, string $image, string $preheader, string $content, \DateTime $created)
     {
         $this->title = $title;
         $this->url = $url;
+        $this->image = $image;
         $this->preheader = $preheader;
         $this->content = $content;
         $this->created = $created;
@@ -51,6 +56,14 @@ class Article
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage(): string
+    {
+        return $this->image;
     }
 
     /**

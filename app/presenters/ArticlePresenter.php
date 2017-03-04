@@ -3,10 +3,8 @@
 namespace Sdh\Veselice\Presenters;
 
 use App\Control\VisualPaginator;
-use App\GalleryManager;
 use Nette\Application\BadRequestException;
 use Nette\Application\UI\Form;
-use Nette\Database\Table\ActiveRow;
 use Nette\DateTime;
 use Nette\Http\FileUpload;
 use Nette\Utils\Strings;
@@ -21,22 +19,16 @@ class ArticlePresenter extends BasePresenter
     {
         $itemPerPage = 15;
 
+        $articles = $this->articleList->getArticles();
+
+
         $vp = new VisualPaginator($this, 'vp');
         $vp->setItemsPerPage($itemPerPage);
-        $vp->setItemsCount(0);
+        $vp->setItemsCount(count($articles));
 
         $page = $vp->page;
 
-        $res = [];
-        $articles = [];
-
-        foreach ($res as $key => $row) {
-            /** @var ActiveRow $row */
-            $dir = substr(md5($row->image), 0, 1);
-            $article = $row->toArray();
-            $article['dir'] = $dir;
-            $articles[] = $article;
-        }
+        $articles = array_slice($articles, $vp->getPaginator()->getOffset(), $itemPerPage);
         $this->template->articles = $articles;
     }
 
