@@ -2,3 +2,11 @@
 =======================================================
 
 [![Build Status](https://travis-ci.org/kozaktomas/sdhveselice.svg?branch=master)](https://travis-ci.org/kozaktomas/sdhveselice)
+
+Develop
+=======
+```
+docker-compose up
+```
+
+Application in now available on `http://127.0.0.1:8090`
