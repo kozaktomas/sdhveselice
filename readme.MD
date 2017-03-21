@@ -6,6 +6,9 @@
 Develop
 =======
 ```
+composer update
+mkdir log # must be writable
+mkdir temp # must me writable
 docker-compose up
 ```
 
