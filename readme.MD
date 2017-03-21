@@ -6,7 +6,7 @@
 Develop
 =======
 ```
-composer update
+composer install
 mkdir log # must be writable
 mkdir temp # must me writable
 docker-compose up
