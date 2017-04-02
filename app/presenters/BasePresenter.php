@@ -26,7 +26,8 @@ abstract class BasePresenter extends Presenter
         }
         $this->template->user = $user;
 
-        $this->template->news = [];
+        $articles = array_slice($this->articleList->getArticles(), 0 , 3);
+        $this->template->news = $articles;
         $this->template->header = rand(1, 4);
         $this->template->staticDebug = StaticFiles::DEBUG_MODE;
     }

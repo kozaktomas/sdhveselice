@@ -1,14 +1,28 @@
 {block title}
-Wellness 2016
+    Wellness 2016
 {/block}
 
-{block image}{/block}
+{block image}/articles/wellness_2016.jpg{/block}
 
 {block preheader}
-<p>Dne 30. prosince 2016 se na svazarmu uskutečnil 1. veselský wellness. Akce odstartovala v 17:00 na rozhledně, kde byl připraven soutěžní výběh a seskok z rozhledny do připraveného bazénu. Na svazarmu se mezitím připravila voda do bazénu, která dosaho</p>
+    <p>Dne 30. prosince 2016 se na svazarmu uskutečnil 1. veselský wellness. Akce odstartovala v 17:00 na rozhledně, kde
+        byl připraven soutěžní výběh a seskok z rozhledny do připraveného bazénu. Na svazarmu se mezitím připravila voda
+        do bazénu, která dosaho</p>
 {/block}
 
 {block content}
-<p>Dne 30. prosince 2016 se na svazarmu uskutečnil 1. veselský wellness. Akce odstartovala v 17:00 na rozhledně, kde byl připraven soutěžní výběh a seskok z rozhledny do připraveného bazénu. Na svazarmu se mezitím připravila voda do bazénu, která dosahovala až 40 °C. Venkovní teplota se pohybovala kolem -5 °C. Pro odvážné byl připraven i bezén se studenou vodou.</p>
-<br>
+    <p>Dne 30. prosince 2016 se na svazarmu uskutečnil 1. veselský wellness. Akce odstartovala v 17:00 na rozhledně, kde
+        byl připraven soutěžní výběh a seskok z rozhledny do připraveného bazénu. Na svazarmu se mezitím připravila voda
+        do bazénu, která dosahovala až 40 °C. Venkovní teplota se pohybovala kolem -5 °C. Pro odvážné byl připraven i
+        bezén se studenou vodou.</p>
+    <div class="clear"></div>
+
+    <h2>Galerie:</h2>
+    <div class="gallery">
+        {for $i = 1; $i <= 6; $i++}
+            <div class="col-lg-6 col-xs-12">
+                <img alt="Obrazek v galerii" class="img-responsive" src="/gallery/wellness/{$i}.jpg"/>
+            </div>
+        {/for}
+    </div>
 {/block}

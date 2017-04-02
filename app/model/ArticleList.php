@@ -76,6 +76,22 @@ class ArticleList
         return $articles;
     }
 
+    /**
+     * @param string $url
+     * @return Article
+     * @throws ArticleNotFoundException
+     */
+    public function getArticleByUrl(string $url)
+    {
+        $articles = $this->getArticles();
+        foreach ($articles as $article) {
+            if ($article->getUrl() === $url)
+                return $article;
+        }
+
+        throw new ArticleNotFoundException("Article with url '{$url}' not found.");
+    }
+
     private function getArticleFiles()
     {
         $files = glob($this->directory . DIRECTORY_SEPARATOR . "*");
