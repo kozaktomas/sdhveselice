@@ -18,7 +18,7 @@
     {/if}
 </head>
 <body>
-<div class="full-width-div">
+<div n:if="false" class="full-width-div">
     <div class="img-responsive">
         <img width="100%" src="/1.png" alt="">
     </div>
@@ -38,7 +38,7 @@
                 <li n:class="($action === 'default') ? 'current'">
                     <a n:href="Document:default">Domů</a>
                 </li>
-                <li n:class="($action === 'list') ? 'current'">
+                <li n:class="(in_array($action, ['list', 'detail']))  ? 'current'">
                     <a n:href="Article:list">Novinky</a>
                 </li>
                 <li n:class="($action === 'vybor') ? 'current'">
