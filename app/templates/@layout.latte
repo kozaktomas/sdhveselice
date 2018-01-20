@@ -112,7 +112,8 @@
                href="https://github.com/kozaktomas/sdhveselice"><img
                         width="32px" src="/images/github-logo.svg" alt="sdhveselice.cz na Githubu"></a>
         </div>
-        <div class="copy">&copy; SDH Veselice 1921 - 2017</div>
+        {var $now = new \DateTime()}
+        <div class="copy">&copy; SDH Veselice 1921 - {$now->format('Y')}</div>
     </div>
 </div>
 
