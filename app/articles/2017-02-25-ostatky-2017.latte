@@ -1,0 +1,32 @@
+{block title}
+    Ostatky 2017
+{/block}
+
+{block image}/articles/ostatky_2017.jpg{/block}
+
+{block preheader}
+    <p>V sobotu 25. 2. 2017 se Veselici konal tradiční ostatkový průvod. Sraz masek byl jako každý rok ve 12:30 u staré
+        hasičské zbrojnice.</p>
+{/block}
+
+{block content}
+    <p>V sobotu 25. 2. 2017 se Veselici konal tradiční ostatkový průvod. Sraz masek byl jako každý rok ve 12:30 u staré
+        hasičské zbrojnice. Průvodu se zúčastnilo asi 20 masek. Zakončení bylo jako loni v místním kulturním domě. Celá
+        akce se konala pod zaštitou SDH a spolku Veselská kaplička.
+    </p>
+    <div class="clear"></div>
+    <h2>Video:</h2>
+    <div class="responsive-video">
+        <iframe src="https://www.youtube.com/embed/27no877EabM" frameborder="0"
+                allowfullscreen></iframe>
+    </div>
+
+    <h2>Galerie:</h2>
+    <div class="gallery">
+        {for $i = 1; $i <= 6; $i++}
+            <div class="col-lg-6 col-xs-12">
+                <img alt="Obrazek v galerii" class="img-responsive" src="/gallery/ostatky_2017/{$i}.jpg"/>
+            </div>
+        {/for}
+    </div>
+{/block}
