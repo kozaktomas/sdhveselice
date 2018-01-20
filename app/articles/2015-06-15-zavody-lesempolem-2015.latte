@@ -1,20 +1,36 @@
 {block title}
-Závody Lesempolem 2015
+    Závody Lesempolem 2015
 {/block}
 
-{block image}{/block}
+{block image}/articles/lesempolem_2015.jpg{/block}
 
 {block preheader}
-<p>Stalo se již tradicí, že se hasiči z Veselice podílí na pořádání běžeckých závodů Lesempolem, které se konají na tratích kolem naší rozhledny. Letoší rok nebyl výjimkou a do Veselice opět dorazili běžci. Závody se uskutečnily 13. 6. 2015 a naši členo</p>
+    <p>Stalo se již tradicí, že se hasiči z Veselice podílí na pořádání běžeckých závodů Lesempolem, které se konají na
+        tratích kolem naší rozhledny. Letoší rok nebyl výjimkou a do Veselice opět dorazili běžci. Závody se uskutečnily
+        13. 6. 2015 a naši členo</p>
 {/block}
 
 {block content}
-<p>Stalo se již tradicí, že se hasiči z Veselice podílí na pořádání běžeckých závodů Lesempolem, které se konají na tratích kolem naší rozhledny. Letoší rok nebyl výjimkou a do Veselice opět dorazili běžci. Závody se uskutečnily 13. 6. 2015 a naši členové pomáhali při navigaci účastníků na trati, registraci a vyhodnocení výsledků. Více informací naleznete přímo na <a href="http://lesempolem.cz/">webových stránkách závodu Lesempolem</a>.</p>
+    <p>Stalo se již tradicí, že se hasiči z Veselice podílí na pořádání běžeckých závodů Lesempolem, které se konají na
+        tratích kolem naší rozhledny. Letoší rok nebyl výjimkou a do Veselice opět dorazili běžci. Závody se uskutečnily
+        13. 6. 2015 a naši členové pomáhali při navigaci účastníků na trati, registraci a vyhodnocení výsledků. Více
+        informací naleznete přímo na <a href="http://lesempolem.cz/">webových stránkách závodu Lesempolem</a>.</p>
 
-<h2>Zajímavé odkazy</h2>
-<ul>
-<li><a target="_blank" href="http://lesempolem.cz/vysledky.html">Výsledky závodu</a></li>
-<li><a target="_blank" href="http://www.oblblansko.cz/8-slider/210-lesem-polem-a-na-slunci">Článek na OBL</a></li>
-<li><a target="_blank" href="http://nikol9.rajce.idnes.cz/Lesempolem_13._6._2015/">Fotogalerie</a></li>
-</ul>
+    <div class="clear"></div>
+    <h2>Zajímavé odkazy</h2>
+    <ul>
+        <li><a target="_blank" href="http://lesempolem.cz/vysledky.html">Výsledky závodu</a></li>
+        <li><a target="_blank" href="http://www.oblblansko.cz/8-slider/210-lesem-polem-a-na-slunci">Článek na OBL</a>
+        </li>
+        <li><a target="_blank" href="http://nikol9.rajce.idnes.cz/Lesempolem_13._6._2015/">Fotogalerie</a></li>
+    </ul>
+
+    <h2>Galerie:</h2>
+    <div class="gallery">
+        {for $i = 1; $i <= 5; $i++}
+            <div class="col-lg-6 col-xs-12">
+                <img alt="Obrazek v galerii" class="img-responsive" src="/gallery/lesempolem_2015/{$i}.jpg"/>
+            </div>
+        {/for}
+    </div>
 {/block}

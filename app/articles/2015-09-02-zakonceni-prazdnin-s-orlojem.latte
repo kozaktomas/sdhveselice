@@ -1,15 +1,33 @@
 {block title}
-Zakončení prázdnin s orlojem
+    Zakončení prázdnin s orlojem
 {/block}
 
-{block image}{/block}
+{block image}/articles/zakonceni_prazdnin_s_orlojem.jpg{/block}
 
 {block preheader}
-<p>V pátek 28. 8. 2015 se za spoluúčasti sdružení Kotržina konalo rozloučení s letními prázdninami. Celá akce odstartovala v 17:45, kdy na poli pod rozhlednou seskočili tři parašutisti. Ihned po seskoku se šlo na rozhlednu, kde byly nachystány pravideln</p>
+    <p>V pátek 28. 8. 2015 se za spoluúčasti sdružení Kotržina konalo rozloučení s letními prázdninami.</p>
 {/block}
 
 {block content}
-<p>V pátek 28. 8. 2015 se za spoluúčasti sdružení Kotržina konalo rozloučení s letními prázdninami. Celá akce odstartovala v 17:45, kdy na poli pod rozhlednou seskočili tři parašutisti. Ihned po seskoku se šlo na rozhlednu, kde byly nachystány pravidelné závody ve výběhu. Tentokrát s doprovodnou disciplínou slaňování, která byla úrčena pro všechny odvážné účastníky. V tu dobu již bylo nachystáno sousedské posezení v parku, na které s přibývajícím časem přicházelo čím dál tím více lidí. Celá akce pak vyvrcholila živým orlojem, na jehož záznam se můžete podívat v krátkém video pod článkem. Celý večer pak uzavřel připravený ohňostroj.</p>
-<br/>
-<iframe width="590" height="325" src="https://www.youtube.com/embed/DFu8ODBwMp0" frameborder="0" allowfullscreen></iframe>
+    <p>V pátek 28. 8. 2015 se za spoluúčasti sdružení Kotržina konalo rozloučení s letními prázdninami. Celá akce
+        odstartovala v 17:45, kdy na poli pod rozhlednou seskočili tři parašutisti. Ihned po seskoku se šlo na
+        rozhlednu, kde byly nachystány pravidelné závody ve výběhu. Tentokrát s doprovodnou disciplínou slaňování, která
+        byla úrčena pro všechny odvážné účastníky. V tu dobu již bylo nachystáno sousedské posezení v parku, na které s
+        přibývajícím časem přicházelo čím dál tím více lidí. Celá akce pak vyvrcholila živým orlojem, na jehož záznam se
+        můžete podívat v krátkém video pod článkem. Celý večer pak uzavřel připravený ohňostroj.</p>
+    <div class="fix"></div>
+    <div class="clear"></div>
+    <br>
+    <div class="responsive-video">
+        <iframe src="https://www.youtube.com/embed/DFu8ODBwMp0" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <h2>Galerie:</h2>
+    <div class="gallery">
+        {for $i = 1; $i <= 7; $i++}
+            <div class="col-lg-6 col-xs-12">
+                <img alt="Obrazek v galerii" class="img-responsive" src="/gallery/zakonceni_prazdnin_s_orlojem/{$i}.jpg"/>
+            </div>
+        {/for}
+    </div>
 {/block}

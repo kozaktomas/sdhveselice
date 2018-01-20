@@ -1,13 +1,31 @@
 {block title}
-Pouť ve Veselici 2015
+    Pouť ve Veselici 2015
 {/block}
 
-{block image}{/block}
+{block image}/articles/pout_2015.jpg{/block}
 
 {block preheader}
-<p>Ve dnech od 12. do 14. června se ve Veselici uskutečnila Svatoantonínská pouť, kterou již po několikáté pořádali dobrovolní hasiči. V pátek byla připravena pouze reprodukovaná hudba a k naší velké radosti dorazila alespoň velký banda lidí z Petrovic.</p>
+    <p>Ve dnech od 12. do 14. června se ve Veselici uskutečnila Svatoantonínská pouť, kterou již po několikáté pořádali
+        dobrovolní hasiči. V pátek byla připravena pouze reprodukovaná hudba a k naší velké radosti dorazila alespoň
+        velký banda lidí z Petrovic.</p>
 {/block}
 
 {block content}
-<p>Ve dnech od 12. do 14. června se ve Veselici uskutečnila Svatoantonínská pouť, kterou již po několikáté pořádali dobrovolní hasiči. V pátek byla připravena pouze reprodukovaná hudba a k naší velké radosti dorazila alespoň velký banda lidí z Petrovic. Hned od sobotního rána naši členové pomáhali zabezpečit <a href="http://lesempolem.cz/">běžecké závody Lesempolem</a>. V sobotu večer již vystoupila živá kapela TRI KENT, která přilákala cca 80 příchozích a bavila je až do ranních hodin. Neděle již tradičně probíhala ve znamení pohodového posezení u dobrého jídla a pití.</p>
+    <p>Ve dnech od 12. do 14. června se ve Veselici uskutečnila Svatoantonínská pouť, kterou již po několikáté pořádali
+        dobrovolní hasiči. V pátek byla připravena pouze reprodukovaná hudba a k naší velké radosti dorazila alespoň
+        velký banda lidí z Petrovic. Hned od sobotního rána naši členové pomáhali zabezpečit <a
+                href="http://lesempolem.cz/">běžecké závody Lesempolem</a>. V sobotu večer již vystoupila živá kapela
+        TRI KENT, která přilákala cca 80 příchozích a bavila je až do ranních hodin. Neděle již tradičně probíhala ve
+        znamení pohodového posezení u dobrého jídla a pití.</p>
+
+
+    <div class="clear"></div>
+    <h2>Galerie:</h2>
+    <div class="gallery">
+        {for $i = 1; $i <= 5; $i++}
+            <div class="col-lg-6 col-xs-12">
+                <img alt="Obrazek v galerii" class="img-responsive" src="/gallery/pout_2015/{$i}.jpg"/>
+            </div>
+        {/for}
+    </div>
 {/block}

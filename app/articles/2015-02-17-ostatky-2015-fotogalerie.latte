@@ -1,15 +1,28 @@
 {block title}
-Ostatky 2015 - fotogalerie
+    Ostatky 2015 - fotogalerie
 {/block}
 
-{block image}{/block}
+{block image}/articles/ostatky_2015.jpg{/block}
 
 {block preheader}
-<p>Dne 14. 2. 2015 se ve Veselici uskutečnil tradiční ostatkový průvod obcí. Celé akce se zúčastnilo asi 15 masek. Celé akci nechyběla dobrá zábava. Všem zúčastněným děkujeme!
-</p>
+    <p>Dne 14. 2. 2015 se ve Veselici uskutečnil tradiční ostatkový průvod obcí. Celé akce se zúčastnilo asi 15 masek.
+        Celé akci nechyběla dobrá zábava. Všem zúčastněným děkujeme!
+    </p>
 {/block}
 
 {block content}
-Dne 14. 2. 2015 se ve Veselici uskutečnil tradiční ostatkový průvod obcí. Celé akce se zúčastnilo asi 15 masek. Celé akci nechyběla <a target="_blank" href="https://www.youtube.com/watch?v=7mWA9kl-728&feature=youtu.be">dobrá zábava</a>. Všem zúčastněným děkujeme!
-<div class="fix"></div>
+    Dne 14. 2. 2015 se ve Veselici uskutečnil tradiční ostatkový průvod obcí. Celé akce se zúčastnilo asi 15 masek. Celé akci nechyběla
+    <a target="_blank" href="https://www.youtube.com/watch?v=7mWA9kl-728&feature=youtu.be">dobrá
+        zábava</a>. Všem zúčastněným děkujeme!
+    <div class="clear"></div>
+
+    <h2>Galerie:</h2>
+    <div class="gallery">
+        {for $i = 1; $i <= 15; $i++}
+            <div class="col-lg-6 col-xs-12">
+                <img alt="Obrazek v galerii" class="img-responsive" src="/gallery/ostatky_2015/{$i}.jpg"/>
+            </div>
+        {/for}
+    </div>
+
 {/block}
