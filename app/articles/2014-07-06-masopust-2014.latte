@@ -2,12 +2,22 @@
 Masopust 2014
 {/block}
 
-{block image}{/block}
+{block image}/articles/ostatky_2014.jpg{/block}
 
 {block preheader}
 <p></p>
 {/block}
 
 {block content}
+
+    <div class="clear"></div>
+    <h2>Galerie:</h2>
+    <div class="gallery">
+        {for $i = 1; $i <= 10; $i++}
+            <div class="col-lg-6 col-xs-12">
+                <img alt="Obrazek v galerii" class="img-responsive" src="/gallery/ostatky_2014/{$i}.jpg"/>
+            </div>
+        {/for}
+    </div>
 
 {/block}
