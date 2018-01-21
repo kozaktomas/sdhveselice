@@ -14,15 +14,14 @@ before_script:
 - travis_retry composer install --no-interaction --prefer-dist
 after_success:
 - composer install --no-dev -o
-- docker login -u $DHUSER -p $DHPASS
+- docker login -e $DHEMAIL -u $DHUSER -p $DHPASS
 - docker build -t kozaktomas/sdhveselice:master .
 - docker push kozaktomas/sdhveselice:master
-
 sudo: required
 services:
-  - docker
+- docker
 cache:
   directories:
   - "$HOME/.composer/cache"
 dd:
-  secure: NpvXDqCBTJg6L4bjmYpIDT/DlH27/vvGQMZBEeozXEeTJjGjDgagQBNJ86J7Pq51ktsFuTxqLFxvavZ5Ifxxt/C/VZ/VVoe4+vEaqn5YJnyhT+7RO6b37qd2akgApgPxzgiekkDFD4sagP9wEtm0wabOR5VsuiXxfhGxlvojTFRla2g9emQr7kd9YPWlQRg7siDOlPFGu/zKiBGyuOPpoUImdSlYr+SzTPYUPSmFa3yabkT/73NYqtwvVs7HHJ/y2Tj7xyyA21X+5v1TAiplfAFBrrYvyA1sX4fZrr51X8ibSrJk+GOt3/RGN+fQeDn41hmpfwjw7nLLDUIFv8H5YRGZk5tkuGZ/cUeGq1vXxkVXSJux8nxFP8xKbMGLzCuf1yVa8bXwD+Xpy20tk88yQ+0wTibHgagU6gbbYHqHIKp4cCKWlIS26ym/DK/LoaXFmuRmGwt7njTDh66KpkD80JZ1qNGrVrZ+EipAkFbBPu7sKi5jCmhBcyttkKYU0C5VxoX/4AqISw4wS0eOVs2q9kltqGr60cK10dXeWPErEBO8RRLmZ7t87fIDAz72bjpEYggh4tlcD/rdykxPO8zjixYC0wLR3pWJzX/A1kna8gOU3TCXiYfazcZtE26XjYZKUQUu+e3ockfAnVCQNVaO+NADX+bynXE1An8LvnEEZqc=
+  secure: PmBtnempHQ35NjavxVDvOVxZXdFx3U7WzlpGc+Fg/5IKV9753YlijagXkgkzDT/G1SZr1yKZXPjki92udwaSkzqBs05YAT27Ge9jXoyb4z4kAkrVVyJbD0uyOyhzXZkgRTx0HvrNcb760VL8MYytguL9ev6/IfANSygo1S/TDVzESvOb5oK/c7L7T0CQdDcFaa2NbQtcj16PwLqFYVfznqm0qgeJjLyxi1HropZXHbDqrotHipx2PXsygGoQlXGbyH0qwKWKyxAwk6TZ1ehjFfTvOqqMNi/hiW5kP7cvfqvK+O/wH+Ug/CtFLii9IlBph9vtqxk+wF+kRjhC6bViRI5eqjyfvk1hf3/7jJbQzKsSS+P+cxFK3RuFgqHMAlZl0lPbGenxDWZupdtiDuLcB6782thn/OzsP6KD+DgRvJ2Pc/0g28YF8FKoudx1UuHBPfRYl67++a9OrDE3fmD1rANpfZMl7q1hPbl9sG3KWv5AoTpF3uQt4K1BOyUeEoT+HSoktztFVYESiyxTQInEHcAT6DdU3HKhfDfpnijROz5+jth3eGg1YgByCmGeit1yuYQK3Ly7BmmA+4mYgbAWswcjbbBgF1UEBuOExPStrl+dJkVlOScY0GUzRIo0C5kH2+w2OLbvnSkwEfPhAwswyb/bMEWPeYA/4Gt3r0NTge4=
