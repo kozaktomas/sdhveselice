@@ -29,8 +29,15 @@ class ArticleContentTests extends \Tester\TestCase
         /** @var ArticleList $articleList */
         $articleList = $this->container->getByType(ArticleList::class);
         foreach ($articleList->getArticles() as $article) {
+            $this->title($article);
             $this->preheader($article);
         }
+    }
+
+    private function title(Article $article)
+    {
+        Assert::true(Strings::length($article->getTitle()) <= 100, "Title is too long in: " . $article->getTitle());
+        Assert::false((bool)preg_match("/<[^<]+>/", $article->getTitle(), $m), "Title contains HTML in: " . $article->getTitle());
     }
 
     private function preheader(Article $article)
