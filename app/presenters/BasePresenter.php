@@ -31,9 +31,6 @@ abstract class BasePresenter extends Presenter
         $this->template->news = $articles;
         $this->template->header = rand(1, 4);
 
-        var_dump(Debugger::$productionMode);
-        var_dump($_SERVER['REMOTE_ADDR']);
-
         $this->template->staticDebug = !Debugger::$productionMode;
         $this->template->cssVersion = StaticFiles::CSS_VERSION;
         $this->template->jsVersion = StaticFiles::JS_VERSION;
