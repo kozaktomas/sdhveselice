@@ -4,6 +4,9 @@ php:
 env:
   matrix:
   - PHP_BIN=php
+  global:
+  - secure: "wl76ctwKcMuk5HlPQoQ+ytWNCUxaZfJSU7kGRojJlm9ItQVdMu15TyBwCrUlEYKo6hNGZcKOBKS9AWiHZsOCefZQxgULkYIu7GINSMGYIibJv9U8/YhAZWR1ERex34znwopuKPjH5Wa/eVn8AehBXZQtPgpYDK5WUekR6c6HjX6gOP6uK+P1QecDFutX7VWP91P5tlDJO9ifrG+Krdk0FqOIa1IPcav+nEuxivqSgrJJQcvawsyR+D/TS2Z5skHxMKR0uiyS3DD/o40M+xWJd076mwrWe8fmPROcyiCLHRP+rLLBzK+w8+lz/aM9zWKTi9VPc2omTaXjSoquXYfJVxKM+6i0vUzWvZf0BBuSzy79baFLF01VZ3eaF+IOD0E1nsEzqXNWgFtJcuhAsHFj5OEiQG27bWkDb39kmQbNwow9V7rLSJbf3zctExTzFtsIOMiCWNYKbrW8qCr5HtknGxm8+txC31TWaS/gx4EfDRCo11cd9Lif8rihDBmZqj/mXU7PpBXEd4NyLZOX87NcN9QH9Sc+u+U/n1arH2M/iBYGstzrbT7YHR+vH4AIGqFId9hRjHUJObJ8xhIyIoQndPxI3SqXyP9ea6sCBoTKGnAb/u5T5rmSMFMPTMdMnxgLeeYg6++FG4oKL7zfAuyCRP28AnpTezjgXQRTTA3jFVk="
+  - secure: "rzZBs7cEIycMG0Ctx3nnhQDmmg4clO0EpH7k0JulKNtb/CDDXfSrplTzE0YgkCY1oExy+wD1DCjCvQtXCU3z/O2GgTtGgSjtOQ3+vy9dIHMSx8hoPetisej5rgSJ4lR68yjPPM/HZiDPWpSIH5IHMYWtk9cvmRmuq4q5UUU/4dgEKUhei4FiNYCBfYFfnyLnz5oZIKhJTZ1a2kPSdsyMl15XnH+rF72RGQ+ArzD8qzKP9ClqBJ3ZlZ94ELHsxuz1TDaA9VwfLPBzNQ5+mZEGcnnPU1z4+cWC1fIRaWtnRhbBWf7fT+qFk5jme1nRotvQ7IUsoQYetSGONMcviRZAPSxg3swixUcY/95hatshqZMo13v6ogREQ0sH7dS9nCwuA4VuXzaOoUnFNx1GWET4j2nuz41LMOAcJKZLxXPEEqyrpaSpOZboXwvgkhcUZb9SToALcoBmf0wwlszhDLuP7dkY7WcKRLLCifsRwr2wSGJRPlEsMY9unOOGsMrXwyn0103FNmAzaGqg8goeB/dwQ9q79Orc6rGY4N5bIlBb1B5DAiPugeEI+WtnbAZTEFZTHlWjn/8h9ynbRayX9a41ysiWNVr8shDJ1nwm7JWoBl911ZV+UHWigEXsZsMLVlHb+IYkSTgHIOHDU0EE62m9Z/q64YyerPzcMnO07jOJIdw="
 script:
 - vendor/bin/tester -p $PHP_BIN tests -s
 after_failure:
@@ -14,7 +17,7 @@ before_script:
 - travis_retry composer install --no-interaction --prefer-dist
 after_success:
 - composer install --no-dev -o
-- docker login -u $DHUSER -p "$DHPASS"
+- docker login -u "$DHUSER" -p "$DHPASS"
 - docker build -t kozaktomas/sdhveselice:master .
 - docker push kozaktomas/sdhveselice:master
 sudo: required
@@ -23,5 +26,3 @@ services:
 cache:
   directories:
   - "$HOME/.composer/cache"
-dd:
-  secure: PmBtnempHQ35NjavxVDvOVxZXdFx3U7WzlpGc+Fg/5IKV9753YlijagXkgkzDT/G1SZr1yKZXPjki92udwaSkzqBs05YAT27Ge9jXoyb4z4kAkrVVyJbD0uyOyhzXZkgRTx0HvrNcb760VL8MYytguL9ev6/IfANSygo1S/TDVzESvOb5oK/c7L7T0CQdDcFaa2NbQtcj16PwLqFYVfznqm0qgeJjLyxi1HropZXHbDqrotHipx2PXsygGoQlXGbyH0qwKWKyxAwk6TZ1ehjFfTvOqqMNi/hiW5kP7cvfqvK+O/wH+Ug/CtFLii9IlBph9vtqxk+wF+kRjhC6bViRI5eqjyfvk1hf3/7jJbQzKsSS+P+cxFK3RuFgqHMAlZl0lPbGenxDWZupdtiDuLcB6782thn/OzsP6KD+DgRvJ2Pc/0g28YF8FKoudx1UuHBPfRYl67++a9OrDE3fmD1rANpfZMl7q1hPbl9sG3KWv5AoTpF3uQt4K1BOyUeEoT+HSoktztFVYESiyxTQInEHcAT6DdU3HKhfDfpnijROz5+jth3eGg1YgByCmGeit1yuYQK3Ly7BmmA+4mYgbAWswcjbbBgF1UEBuOExPStrl+dJkVlOScY0GUzRIo0C5kH2+w2OLbvnSkwEfPhAwswyb/bMEWPeYA/4Gt3r0NTge4=
