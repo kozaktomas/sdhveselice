@@ -31,6 +31,7 @@ class ArticleContentTests extends \Tester\TestCase
         foreach ($articleList->getArticles() as $article) {
             $this->title($article);
             $this->preheader($article);
+            $this->image($article);
         }
     }
 
@@ -48,6 +49,12 @@ class ArticleContentTests extends \Tester\TestCase
             "." === Strings::substring($article->getPreheader(), -1)
             || "" === $article->getPreheader(),
                 "Preheader have to ends with dot or have to be empty in: " . $article->getTitle());
+    }
+
+    private function image(Article $article)
+    {
+        $filePath = WWW_DIR . $article->getImage();
+        Assert::true(file_exists($filePath), "Image doens't exist in article: " . $article->getTitle());
     }
 
 

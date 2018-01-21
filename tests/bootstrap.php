@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('WWW_DIR')) {
+    define('WWW_DIR', __DIR__ . "/../www");
+}
+
 require __DIR__ . '/../vendor/autoload.php';
 
 if (!class_exists('Tester\Assert')) {
