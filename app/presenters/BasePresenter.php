@@ -6,6 +6,7 @@ namespace Sdh\Veselice\Presenters;
 use Nette\Application\UI\Presenter;
 use Sdh\Veselice\Model\ArticleList;
 use Sdh\Veselice\Model\StaticFiles;
+use Tracy\Debugger;
 
 
 /**
@@ -29,7 +30,13 @@ abstract class BasePresenter extends Presenter
         $articles = array_slice($this->articleList->getArticles(), 0 , 3);
         $this->template->news = $articles;
         $this->template->header = rand(1, 4);
-        $this->template->staticDebug = StaticFiles::DEBUG_MODE;
+
+        var_dump(Debugger::$productionMode);
+        var_dump($_SERVER['REMOTE_ADDR']);
+
+        $this->template->staticDebug = !Debugger::$productionMode;
+        $this->template->cssVersion = StaticFiles::CSS_VERSION;
+        $this->template->jsVersion = StaticFiles::JS_VERSION;
     }
 
 }

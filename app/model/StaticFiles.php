@@ -10,9 +10,9 @@ class StaticFiles
     const DEBUG_MODE = true;
 
     /** Version of css file */
-    const CSS_VERSION = '1.0.0';
+    const CSS_VERSION = '0.9.0';
 
     /** Version of js file */
-    const JS_VERSION = '1.0.0';
+    const JS_VERSION = '0.9.0';
 
 }
