@@ -1,9 +1,5 @@
 <?php
 
-putenv('SDHVESELICE_DATABASE_URL=mysql://user:password@host/database_name');
-putenv('SDHVESELICE_APP_USER=user:password');
-
-
 require __DIR__ . '/../vendor/autoload.php';
 
 if (!class_exists('Tester\Assert')) {
