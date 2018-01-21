@@ -6,6 +6,7 @@ use Latte\Engine;
 use Nette\Caching\Cache;
 use Nette\Caching\IStorage;
 use Nette\Utils\DateTime;
+use Nette\Utils\Strings;
 
 class ArticleList
 {
@@ -50,9 +51,9 @@ class ArticleList
                 continue;
             }
 
-            $title = trim($latte->renderToString($file, $defaultVariables, 'title'));
-            $image = trim($latte->renderToString($file, $defaultVariables, 'image'));
-            $preheader = $latte->renderToString($file, $defaultVariables, 'preheader');
+            $title = Strings::trim($latte->renderToString($file, $defaultVariables, 'title'));
+            $image = Strings::trim($latte->renderToString($file, $defaultVariables, 'image'));
+            $preheader = Strings::trim($latte->renderToString($file, $defaultVariables, 'preheader'));
             $content = $latte->renderToString($file, $defaultVariables, 'content');
             $created = new DateTime($matches[1]);
             $url = $matches[2];

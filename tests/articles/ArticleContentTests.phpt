@@ -37,6 +37,10 @@ class ArticleContentTests extends \Tester\TestCase
     {
         Assert::true(Strings::length($article->getPreheader()) < 220, "Preheader is too long in: " . $article->getTitle());
         Assert::false((bool)preg_match("/<[^<]+>/", $article->getPreheader(), $m), "Preheader contains HTML in: " . $article->getTitle());
+        Assert::true(
+            "." === Strings::substring($article->getPreheader(), -1)
+            || "" === $article->getPreheader(),
+                "Preheader have to ends with dot or have to be empty in: " . $article->getTitle());
     }
 
 
