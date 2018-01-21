@@ -1,22 +1,28 @@
 language: php
-
 php:
-  - 7.1
+- 7.1
 env:
   matrix:
-    - PHP_BIN=php
+  - PHP_BIN=php
 script:
-  - vendor/bin/tester -p $PHP_BIN tests -s
+- vendor/bin/tester -p $PHP_BIN tests -s
 after_failure:
-  - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
+- for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
 before_script:
-  - mkdir -p temp/cache
-  - mkdir log
-  - travis_retry composer install --no-interaction --prefer-dist
+- mkdir -p temp/cache
+- mkdir log
+- travis_retry composer install --no-interaction --prefer-dist
 after_success:
-  - composer install --no-dev -o
+- composer install --no-dev -o
+- docker login -u "$DHUSER" -p "$DHPASS"
+- docker build -t kozaktomas/sdhveselice:master .
+- docker push kozaktomas/sdhveselice:master
 
-sudo: false
+sudo: required
+services:
+  - docker
 cache:
   directories:
   - "$HOME/.composer/cache"
+dd:
+  secure: NpvXDqCBTJg6L4bjmYpIDT/DlH27/vvGQMZBEeozXEeTJjGjDgagQBNJ86J7Pq51ktsFuTxqLFxvavZ5Ifxxt/C/VZ/VVoe4+vEaqn5YJnyhT+7RO6b37qd2akgApgPxzgiekkDFD4sagP9wEtm0wabOR5VsuiXxfhGxlvojTFRla2g9emQr7kd9YPWlQRg7siDOlPFGu/zKiBGyuOPpoUImdSlYr+SzTPYUPSmFa3yabkT/73NYqtwvVs7HHJ/y2Tj7xyyA21X+5v1TAiplfAFBrrYvyA1sX4fZrr51X8ibSrJk+GOt3/RGN+fQeDn41hmpfwjw7nLLDUIFv8H5YRGZk5tkuGZ/cUeGq1vXxkVXSJux8nxFP8xKbMGLzCuf1yVa8bXwD+Xpy20tk88yQ+0wTibHgagU6gbbYHqHIKp4cCKWlIS26ym/DK/LoaXFmuRmGwt7njTDh66KpkD80JZ1qNGrVrZ+EipAkFbBPu7sKi5jCmhBcyttkKYU0C5VxoX/4AqISw4wS0eOVs2q9kltqGr60cK10dXeWPErEBO8RRLmZ7t87fIDAz72bjpEYggh4tlcD/rdykxPO8zjixYC0wLR3pWJzX/A1kna8gOU3TCXiYfazcZtE26XjYZKUQUu+e3ockfAnVCQNVaO+NADX+bynXE1An8LvnEEZqc=
