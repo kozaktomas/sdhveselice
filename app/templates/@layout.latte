@@ -86,7 +86,7 @@
                 {foreach $news as $new}
                     <a class="list-group-item" n:href="Article:detail $new->getUrl()">
                         <h3>{$new->getTitle()}</h3>
-                        <p>{$new->getPreheader()|noescape}</p>
+                        <p>{$new->getPreheader()}</p>
                     </a>
                 {/foreach}
             </div>
