@@ -1,0 +1,29 @@
+{block title}
+    Běh na historickýh lyžích
+{/block}
+
+{block image}/articles/lyze_2018.jpg{/block}
+
+{block preheader}
+    Dne 25. února 2018 se na poli pod rozhlednou konal vůbec první běh na historických lyžích.
+{/block}
+
+{block content}
+    <p>
+        Dne 25. února 2018 se na poli pod rozhlednou konal vůbec první běh na historických lyžích. Start hlavního závodu
+        byl připraven na 14:30 a závodu se zúčastnilo cca 25 závodníků. I přes zabavný charakter akce a mrazivých - 15°C
+        se bojovalo až do posledních metrů. Předání cen a ukončení akce proběhlo v Hospůdce na Kasárnách.
+    </p>
+
+    <div class="clear"></div>
+
+    <h2>Galerie:</h2>
+    <div class="gallery">
+        {for $i = 1; $i <= 6; $i++}
+            <div class="col-lg-6 col-xs-12">
+                <img alt="Obrazek v galerii" class="img-responsive" src="/gallery/lyze_2018/{$i}.jpg"/>
+            </div>
+        {/for}
+    </div>
+
+{/block}
