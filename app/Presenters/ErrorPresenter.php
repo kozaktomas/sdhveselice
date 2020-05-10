@@ -10,12 +10,7 @@ use Nette, Tracy\Debugger;
  */
 class ErrorPresenter extends BasePresenter
 {
-
-    /**
-     * @param  Exception
-     * @return void
-     */
-    public function renderDefault($exception)
+    public function renderDefault(\Throwable $exception): void
     {
         if ($exception instanceof Nette\Application\BadRequestException) {
             $code = $exception->getCode();
@@ -34,5 +29,4 @@ class ErrorPresenter extends BasePresenter
             $this->terminate();
         }
     }
-
 }

@@ -1,51 +1,40 @@
 <?php
 
-namespace App\Control;
+declare(strict_types=1);
+
+namespace Sdh\Veselice\Control\VisualPaginator;
 
 use Nette\Application\UI\Control;
+use Nette\Bridges\ApplicationLatte\Template;
 use Nette\Utils\Paginator;
 
+/**
+ * @property Template $template
+ */
 class VisualPaginator extends Control
 {
-    
-    /** @var Paginator */
-    private $paginator;
+
+    private Paginator $paginator;
 
     /** @persistent */
-    public $page = 1;
+    public string $page = "1";
 
-    /**
-     * VisualPaginator constructor.
-     * @param Control $parent
-     * @param string $name
-     */
-    public function __construct(Control $parent, string $name)
+    public function __construct()
     {
         $this->paginator = new Paginator();
-        parent::__construct($parent, $name);
     }
 
-    /**
-     * @param int $count
-     */
-    public function setItemsCount(int $count)
+    public function setItemsCount(int $count): void
     {
         $this->paginator->itemCount = $count;
     }
 
-    /**
-     * @param int $itemsPerPage
-     */
-    public function setItemsPerPage(int $itemsPerPage)
+    public function setItemsPerPage(int $itemsPerPage): void
     {
         $this->paginator->itemsPerPage = $itemsPerPage;
     }
 
-    /**
-     * Renders paginator.
-     * @return void
-     */
-    public function render()
+    public function render(): void
     {
         $page = $this->paginator->page;
         if ($this->paginator->pageCount < 2) {
@@ -54,7 +43,7 @@ class VisualPaginator extends Control
             $arr = range(max($this->paginator->firstPage, $page - 3), min($this->paginator->lastPage, $page + 3));
             $count = 4;
             $quotient = ($this->paginator->pageCount - 1) / $count;
-            for ($i = 0 ; $i <= $count ; $i++) {
+            for ($i = 0; $i <= $count; $i++) {
                 $arr[] = round($quotient * $i) + $this->paginator->firstPage;
             }
             sort($arr);
@@ -67,22 +56,20 @@ class VisualPaginator extends Control
         $this->template->render();
     }
 
-    public function getPaginator()
+    public function getPaginator(): Paginator
     {
         return $this->paginator;
     }
 
     /**
-     * Loads state informations.
-     * @param array
-     * @return void
+     * @param string[] $params
+     * @throws \Nette\Application\BadRequestException
      */
-    public function loadState(array $params)
+    public function loadState(array $params): void
     {
         parent::loadState($params);
         if (isset($params['page'])) {
-            $this->paginator->page = $params['page'];
+            $this->paginator->page = (int)$params['page'];
         }
     }
-
 }

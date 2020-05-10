@@ -1,38 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sdh\Veselice\Presenters;
 
-use App\Control\VisualPaginator;
 use Nette\Application\BadRequestException;
+use Sdh\Veselice\Control\VisualPaginator\VisualPaginator;
 use Sdh\Veselice\Model\ArticleNotFoundException;
 
 class ArticlePresenter extends BasePresenter
 {
+    /** Number of articles shown in list */
+    private const ITEMS_PER_PAGE = 15;
 
-    /**
-     * Vykresluje seznam článků včetně stránkování
-     */
-    public function renderList()
+    public function renderList(): void
     {
-        $itemPerPage = 15;
-
         $articles = $this->articleList->getArticles();
 
-        $vp = new VisualPaginator($this, 'vp');
-        $vp->setItemsPerPage($itemPerPage);
+        $vp = new VisualPaginator();
+        $vp->setItemsPerPage(self::ITEMS_PER_PAGE);
         $vp->setItemsCount(count($articles));
 
-        $articles = array_slice($articles, $vp->getPaginator()->getOffset(), $itemPerPage);
+        $this->addComponent($vp, 'vp');
+
+        $articles = array_slice($articles, $vp->getPaginator()->getOffset(), self::ITEMS_PER_PAGE);
         $this->template->articles = $articles;
     }
 
-
-    /**
-     * Article detail
-     * @param string $url
-     * @throws BadRequestException
-     */
-    public function renderDetail($url)
+    public function renderDetail(string $url): void
     {
         try {
             $article = $this->articleList->getArticleByUrl((string)$url);
@@ -41,5 +36,4 @@ class ArticlePresenter extends BasePresenter
             throw new BadRequestException();
         }
     }
-
 }

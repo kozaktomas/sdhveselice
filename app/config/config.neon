@@ -10,11 +10,12 @@ application:
 		*: Sdh\Veselice\Presenters\*Presenter
 
 session:
-	expiration: 14 days
+	expiration: 2 days
+	autoStart: false
 
 
 
 services:
 	- Sdh\Veselice\Model\ArticleList
-	- App\RouterFactory
-	router: @App\RouterFactory::createRouter
+	routerFactory: Sdh\Veselice\Router\RouterFactory
+	router: @routerFactory::createRouter

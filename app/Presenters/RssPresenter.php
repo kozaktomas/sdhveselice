@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sdh\Veselice\Presenters;
 
-
+use Sdh\Veselice\Model\Article;
 use Sdh\Veselice\Model\XmlResponse;
 use Nette\Utils\Strings;
 use Suin\RSSWriter\Channel;
@@ -12,7 +14,9 @@ use Suin\RSSWriter\Item;
 class RssPresenter extends BasePresenter
 {
 
-    public function actionFeed()
+    private const ARTICLES_COUNT_IN_RSS = 10;
+
+    public function actionFeed(): void
     {
         $feed = new Feed();
         $channel = new Channel();
@@ -22,18 +26,19 @@ class RssPresenter extends BasePresenter
             ->url($this->link("//Document:default"))
             ->appendTo($feed);
 
-        $articles = $this->articleTable->order('id DESC')->limit(10);
+        /** @var Article[] $articles */
+        $articles = $this->articleList->getArticles();
+        $articles = array_slice($articles, 0, self::ARTICLES_COUNT_IN_RSS);
         foreach ($articles as $article) {
-            $text = Strings::truncate(strip_tags($article->text), 260);
+            $text = Strings::truncate(strip_tags($article->getContent()), 260);
             $item = new Item();
             $item
-                ->title($article->title)
+                ->title($article->getTitle())
                 ->description($text)
-                ->url($this->link("//Article:detail", ['url' => $article->url]))
+                ->url($this->link("//Article:detail", ['url' => $article->getUrl()]))
                 ->appendTo($channel);
         }
         $this->sendResponse(new XmlResponse($feed));
-        $this->terminate();
     }
 
 }

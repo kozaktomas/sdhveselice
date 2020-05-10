@@ -1,37 +1,38 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sdh\Veselice\Presenters;
 
-
 use Nette\Application\UI\Presenter;
+use Nette\Bridges\ApplicationLatte\Template;
 use Sdh\Veselice\Model\ArticleList;
 use Sdh\Veselice\Model\StaticFiles;
 use Tracy\Debugger;
 
-
 /**
- * Base presenter for all application presenters.
+ * @property Template $template
  */
 abstract class BasePresenter extends Presenter
 {
 
-    /** @var ArticleList @inject */
-    public $articleList;
+    protected ArticleList $articleList;
+
+    public function __construct(ArticleList $articleList)
+    {
+        parent::__construct();
+        $this->articleList = $articleList;
+    }
 
     protected function startup()
     {
         parent::startup();
-        $user = false;
-        if ($this->getUser()->isLoggedIn()) {
-            $user = true;
-        }
-        $this->template->user = $user;
 
-        $articles = array_slice($this->articleList->getArticles(), 0 , 3);
+        $articles = array_slice($this->articleList->getArticles(), 0, 3);
         $this->template->news = $articles;
         $this->template->header = rand(1, 4);
 
-        $this->template->staticDebug = !Debugger::$productionMode;
+        $this->template->staticDebug = \getenv("DEV") === "1";
         $this->template->cssVersion = StaticFiles::CSS_VERSION;
         $this->template->jsVersion = StaticFiles::JS_VERSION;
     }

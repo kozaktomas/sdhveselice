@@ -1,6 +1,6 @@
 language: php
 php:
-- 7.1
+- 7.4
 env:
   matrix:
   - PHP_BIN=php
@@ -9,6 +9,7 @@ env:
   - secure: "rzZBs7cEIycMG0Ctx3nnhQDmmg4clO0EpH7k0JulKNtb/CDDXfSrplTzE0YgkCY1oExy+wD1DCjCvQtXCU3z/O2GgTtGgSjtOQ3+vy9dIHMSx8hoPetisej5rgSJ4lR68yjPPM/HZiDPWpSIH5IHMYWtk9cvmRmuq4q5UUU/4dgEKUhei4FiNYCBfYFfnyLnz5oZIKhJTZ1a2kPSdsyMl15XnH+rF72RGQ+ArzD8qzKP9ClqBJ3ZlZ94ELHsxuz1TDaA9VwfLPBzNQ5+mZEGcnnPU1z4+cWC1fIRaWtnRhbBWf7fT+qFk5jme1nRotvQ7IUsoQYetSGONMcviRZAPSxg3swixUcY/95hatshqZMo13v6ogREQ0sH7dS9nCwuA4VuXzaOoUnFNx1GWET4j2nuz41LMOAcJKZLxXPEEqyrpaSpOZboXwvgkhcUZb9SToALcoBmf0wwlszhDLuP7dkY7WcKRLLCifsRwr2wSGJRPlEsMY9unOOGsMrXwyn0103FNmAzaGqg8goeB/dwQ9q79Orc6rGY4N5bIlBb1B5DAiPugeEI+WtnbAZTEFZTHlWjn/8h9ynbRayX9a41ysiWNVr8shDJ1nwm7JWoBl911ZV+UHWigEXsZsMLVlHb+IYkSTgHIOHDU0EE62m9Z/q64YyerPzcMnO07jOJIdw="
 script:
 - vendor/bin/tester -p $PHP_BIN tests -s
+- php vendor/bin/phpstan analyse -l max -c phpstan.neon app
 after_failure:
 - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
 before_script:

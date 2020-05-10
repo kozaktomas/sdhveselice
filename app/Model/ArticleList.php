@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sdh\Veselice\Model;
 
 use Latte\Engine;
@@ -11,19 +13,11 @@ use Nette\Utils\Strings;
 class ArticleList
 {
 
-    /** @var string */
-    private $directory;
+    private string $directory;
 
-    /** @var Cache */
-    private $cache;
+    private Cache $cache;
 
-
-    /**
-     * ArticleList constructor.
-     * @param null|string $directory
-     * @param IStorage $storage
-     */
-    public function __construct(?string $directory = null, IStorage $storage)
+    public function __construct(?string $directory, IStorage $storage)
     {
         if (is_null($directory)) {
             $this->directory = __DIR__ . "/../articles";
@@ -36,6 +30,7 @@ class ArticleList
 
     /**
      * @return Article[]
+     * @throws \Exception
      */
     public function getArticles(): array
     {
@@ -82,7 +77,7 @@ class ArticleList
      * @return Article
      * @throws ArticleNotFoundException
      */
-    public function getArticleByUrl(string $url)
+    public function getArticleByUrl(string $url): Article
     {
         $articles = $this->getArticles();
         foreach ($articles as $article) {
@@ -93,9 +88,16 @@ class ArticleList
         throw new ArticleNotFoundException("Article with url '{$url}' not found.");
     }
 
-    private function getArticleFiles()
+    /**
+     * @return string[]
+     * @throws ArticleNotFoundException
+     */
+    private function getArticleFiles(): array
     {
         $files = glob($this->directory . DIRECTORY_SEPARATOR . "*");
+        if (!$files) {
+            throw new ArticleNotFoundException('Could not find any files in article directory');
+        }
         return $files;
     }
 

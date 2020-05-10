@@ -1,24 +1,17 @@
 <?php
 
-namespace App;
+declare(strict_types=1);
+
+namespace Sdh\Veselice\Router;
 
 use Nette\Application\Routers\RouteList,
     Nette\Application\Routers\Route;
 
-
-/**
- * Router factory.
- */
 class RouterFactory
 {
-
-    /**
-     * @return \Nette\Application\IRouter
-     */
-    public function createRouter()
+    public function createRouter(): RouteList
     {
         $router = new RouteList();
-        $router[] = new Route('admin', "Sign:in");
         $router[] = new Route("rss", "Rss:feed");
         $router[] = new Route('clanky.html?stranka=<vp-page>', "Article:list");
         $router[] = new Route('clanek/<url>.html', "Article:detail");
@@ -30,5 +23,4 @@ class RouterFactory
         $router[] = new Route("prace-s-mlazedi.html", "Document:mladez");
         return $router;
     }
-
 }

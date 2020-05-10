@@ -6,11 +6,9 @@
 Develop
 =======
 ```
-composer install
-mkdir log # must be writable
-mkdir temp # must me writable
-docker-compose up
-set debug mode in bootstrap.php
+# make sure your docker engine is up and running
+make
+make test
 ```
 
 Application in now available on `http://localhost:8090`
